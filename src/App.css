@@ -9,7 +9,7 @@ body {
   position: fixed;
   height: 100vh;
   background-color: #43425D;
-  padding-top: 40px;
+  padding-top: 48px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -20,12 +20,25 @@ body {
 
 #sidebar .ui.menu > a.item {
   padding: 10px 20px;
-  line-height: 20px;
+  line-height: 30px;
   color: #FFF;
   border-radius: 0 !important;
   margin-top: 0;
   margin-bottom: 0;
+  font-size: 15px;
 } 
+#sidebar .ui.menu > a.item.log-out{
+  color: red;
+  font-weight: bold;
+  font-size: 22;
+
+}
+/* #sidebar > div > a.header.headerTitle{
+  color: #FFF;
+  text-align: center;
+  bottom: 15;
+
+} */
 
 #sidebar .ui.menu > a.item:hover {
   background-color: #eee;
@@ -39,7 +52,7 @@ body {
 }
 
 #content h1 {
-  font-size: 36px;
+  font-size: 15px;
 }
 
 #content .ui.dividing.header {
@@ -52,6 +65,8 @@ body {
   border: none;
   padding-left: 0;
   padding-right: 0;
+  z-index: -1;
+  color: #43425D;
 }
 
 /* .ui.borderless.fluid.inverted.top.fixed.menu{

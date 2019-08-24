@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, 
   Route,
 } from 'react-router-dom'; 
-import SignInPage from './SignInPage'
+// import SignInPage from './SignInPage'
 import Dashboard from './Dashboard'
 import LoggedOut from './LoggedOut'
 import './App.css';
@@ -14,8 +14,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <div id="page-body">
-            <Route path="/" component={SignInPage} exact/>
-            <Route path="/dashboard" component={Dashboard} />
+            {/* <Route path="/" component={SignInPage} exact/> */}
+            <Route path="/" component={Dashboard} />
             <Route path="/logged-out" component={LoggedOut} />
           </div>
         </div>
