@@ -44,21 +44,19 @@ def index():
 
 @app.route("/api/gas-leaks")
 def gasLeaks():
+    ## Use pandas to read csv
+    df = pd.read_csv("final_leaks.csv")
 
-    stmt = db.session.query(coned_data).statement
-    df = pd.read_sql_query(stmt, db.session.bind)
+    # Convert the Date column to correct datetime format
+    df['Date'] = pd.to_datetime(df['Date'], format = '%Y-%m-%d')
 
-    # Filter the data based on the sample number and
-    # only keep rows with values above 1
+    # get the data for the full year where date = 2013
     year_data = df[df['Date'].dt.year == 2013]
+    year_data_zip = pd.DataFrame(year_data.groupby('ZIP_CODE').sum()['TMAX'])
+    year_data_zip.rename(columns = {'TMAX': 'Total Leaks'}, inplace=True)
+    year_data_dict = year_data_zip.to_dict()
 
-    # Format the data to send as json
-    data = {
-        "Dates": year_data.Date.values
-        # "sample_values": sample_data[sample].values.tolist(),
-        # "otu_labels": sample_data.otu_label.tolist(),
-    }
-    return year_data
+    return jsonify(year_data_dict)
 
     # sel = [
     #     coned_data.Date,
