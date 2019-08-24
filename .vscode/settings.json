@@ -1,0 +1,4 @@
+{
+    "git.ignoreLimitWarning": true,
+    "python.pythonPath": "/anaconda3/envs/pythondata/bin/python"
+}
