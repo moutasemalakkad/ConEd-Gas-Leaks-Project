@@ -1,4 +1,5 @@
 import sqlalchemy
+import datetime as dt
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, inspect
@@ -6,6 +7,7 @@ from sqlalchemy.orm import Session, Mapper
 from sqlalchemy import create_engine
 from flask import render_template, Flask,url_for, send_from_directory, send_file, jsonify
 from flask_sqlalchemy import SQLAlchemy
+import pandas as pd
 
 
 # Initilaize an instance
@@ -42,18 +44,35 @@ def index():
 
 @app.route("/api/gas-leaks")
 def gasLeaks():
-    sel = [
-        coned_data.Date,
-        coned_data.TMAX,
-    ]
-    results = db.session.query(*sel).filter(coned_data.Date >= "01/01/2014").all()
 
-    data = {}
-    for result in results:
-        data["Date"] = result[0]
-        data["TMAX"] = result[1]
+    stmt = db.session.query(coned_data).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
 
-    return jsonify(data)
+    # Filter the data based on the sample number and
+    # only keep rows with values above 1
+    year_data = df[df['Date'].dt.year == 2013]
+
+    # Format the data to send as json
+    data = {
+        "Dates": year_data.Date.values
+        # "sample_values": sample_data[sample].values.tolist(),
+        # "otu_labels": sample_data.otu_label.tolist(),
+    }
+    return year_data
+
+    # sel = [
+    #     coned_data.Date,
+    #     coned_data.TMAX,
+    # ]
+    # results = db.session.query(*sel).all()
+   
+    # data = {}
+    # for result in results:
+    #     data["Date"] = result[0]
+    #     data["TMAX"] = result[1]
+
+    # return jsonify(data)
+    
 
 @app.route('/static/<path:path>')
 def send_js(path):
@@ -61,4 +80,4 @@ def send_js(path):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
