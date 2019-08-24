@@ -5,14 +5,22 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, inspect
 from sqlalchemy.orm import Session, Mapper
 from sqlalchemy import create_engine
+<<<<<<< HEAD
+from flask_sqlalchemy import SQLAlchemy
+
+=======
 from flask import render_template, Flask,url_for, send_from_directory, send_file, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
+<<<<<<< HEAD
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
+=======
+>>>>>>> 9f1bd067bc7e709914f0574e14cd7344b22d2f29
+>>>>>>> ad254cd25d9abbbe405cb5704f151bae0a3b457d
 
 
 # Initilaize an instance
