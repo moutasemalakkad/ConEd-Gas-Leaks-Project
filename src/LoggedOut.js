@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -50,7 +50,7 @@ export default function LoggedOut() {
           <Typography>
             You Are Logged Out!
           </Typography>
-            <Button
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -58,7 +58,7 @@ export default function LoggedOut() {
               className={classes.submit}
               >
               Log Back In
-            </Button>
+            </Button> */}
         </div>
       </Grid>
     </Grid>

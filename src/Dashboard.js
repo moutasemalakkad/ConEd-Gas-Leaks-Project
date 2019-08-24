@@ -10,12 +10,21 @@ import {
   Menu
 } from "semantic-ui-react";
 
+import * as d3 from 'd3';
+
 class Dashboard extends Component {
   state = {
     dropdownMenuStyle: {
       display: "none"
     }
+  }
+    state= {
+    temps:{},
+    zipCodes: {},
+    year: {},
+    month: {}
   };
+
 
   handleToggleDropdownMenu = () => {
     let newState = Object.assign({}, this.state);
@@ -32,25 +41,21 @@ class Dashboard extends Component {
     return (
       <div className="Dashboard">
         <Grid padded className="tablet computer only">
-          <Menu borderless inverted fluid fixed="top">
-            <Menu.Item header as="a">
-              Gas Leak Tracker
-            </Menu.Item>
+          <Menu borderless fluid fixed="top">
+          <Menu.Header as="a" className="headerTitle">Gas Leak Finder</Menu.Header>
             <Menu.Menu position="right">
-              <Menu.Item as="a">Jane Doe 
-              <Image 
-                alt='User Avatar'
-                src='/static/images/wireframe/Avatar.png' avatar 
-                size='small'  
-                />
+              <Menu.Item as="a">
+              <Header as='h4'>
+                <Image circular src='https://react.semantic-ui.com/images/avatar/large/patrick.png' /> Patrick
+              </Header>
               </Menu.Item>
             </Menu.Menu>
           </Menu>
         </Grid>
         <Grid padded className="mobile only">
-          <Menu borderless inverted fluid fixed="top">
+          <Menu borderless fluid fixed="top">
             <Menu.Item header as="a">
-              Gas Leak Tracker
+              Gas Leak Finder
             </Menu.Item>
             <Menu.Menu position="right">
               <Menu.Item>
@@ -79,6 +84,7 @@ class Dashboard extends Component {
               <Menu.Item as="a" className="data5">2017</Menu.Item>
               <Menu.Item as="a" className="data6">2018</Menu.Item>
               <Menu.Item as="a" className="data7">2019</Menu.Item>
+              <Menu.Item as="a" className="log-out red">Log Out</Menu.Item>
             </Menu>
           </Menu>
         </Grid>
@@ -90,10 +96,11 @@ class Dashboard extends Component {
             id="sidebar"
           >
             <Menu vertical borderless fluid text>
+            <Divider />
               <Menu.Item as="a" className="menuTitle">
                 View By Year
-                <Divider />
               </Menu.Item>
+              <Divider />
               <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2013</Menu.Item>
               <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2014</Menu.Item>
               <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2015</Menu.Item>
@@ -101,6 +108,7 @@ class Dashboard extends Component {
               <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2017</Menu.Item>
               <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2018</Menu.Item>
               <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2019</Menu.Item>
+              <Menu.Item as="a" className="log-out" textAlign="center" ><Icon link name= "log out red"/>Log Out</Menu.Item>
             </Menu>
           </Grid.Column>
           <Grid.Column
@@ -119,15 +127,15 @@ class Dashboard extends Component {
               <Grid.Row textAlign="center">
             <Grid container stackable columns={2}>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-                <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                <Image src='https://source.unsplash.com/random' />
               </Grid.Column>
               <Grid.Column mobile={5} tablet={6} computer={6}>
               <Grid.Row>
-                <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                <Image src='https://source.unsplash.com/random' />
               </Grid.Row>
               <Divider/>
               <Grid.Row mobile={5} tablet={6} computer={6}>
-                <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                <Image src='https://source.unsplash.com/random' />
               </Grid.Row>
               </Grid.Column>
             </Grid>
