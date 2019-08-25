@@ -7,8 +7,10 @@ import {
   Header,
   Icon,
   Image,
-  Menu
+  Menu,
+  Container
 } from "semantic-ui-react";
+import BarLine from './BarLine';
 
 class Dashboard extends Component {
   state = {
@@ -44,7 +46,7 @@ class Dashboard extends Component {
           </Menu>
         </Grid>
         <Grid padded className="mobile only">
-          <Menu borderless fixed fluid="top">
+          <Menu borderless fluid fixed="top">
             <Menu.Item header as="a" >
               Gas Leak Finder
             </Menu.Item>
@@ -94,14 +96,14 @@ class Dashboard extends Component {
                 View By Year
               </Menu.Item>
               <Divider />
-              <Menu.Item as="a">2013</Menu.Item>
-              <Menu.Item as="a">2014</Menu.Item>
-              <Menu.Item as="a">2015</Menu.Item>
-              <Menu.Item as="a">2016</Menu.Item>
-              <Menu.Item as="a">2017</Menu.Item>
-              <Menu.Item as="a">2018</Menu.Item>
-              <Menu.Item as="a">2019</Menu.Item>
-              <Menu.Item as="a" className="log-out"><Icon link name= "log out red"/>Log Out</Menu.Item>
+              <Menu.Item as="a" className="data1">2013</Menu.Item>
+              <Menu.Item as="a" className="data2">2014</Menu.Item>
+              <Menu.Item as="a" className="data3">2015</Menu.Item>
+              <Menu.Item as="a" className="data4">2016</Menu.Item>
+              <Menu.Item as="a" className="data5">2017</Menu.Item>
+              <Menu.Item as="a" className="data6">2018</Menu.Item>
+              <Menu.Item as="a" className="data7">2019</Menu.Item>
+              <Menu.Item as="a" className="log-out"><Icon link name= "log out" color="red"/>Log Out</Menu.Item>
             </Menu>
           </Grid.Column>
           <Grid.Column
@@ -120,12 +122,20 @@ class Dashboard extends Component {
               <Grid.Row textAlign="center">
             <Grid container stackable columns={2}>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-                <Image src='https://source.unsplash.com/random' />
+                <Container id="layout">
+                  <Grid.Row id="container">
+                    <svg/>
+                    <BarLine />
+                  </Grid.Row>
+                </Container>
               </Grid.Column>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-              <Grid.Row>
-                <Image src='https://source.unsplash.com/random' />
-              </Grid.Row>
+              <Container id="layout">
+                  <Grid.Row id="container">
+                    <svg/>
+                   
+                  </Grid.Row>
+                </Container>
               </Grid.Column>
             </Grid>
             </Grid.Row>
