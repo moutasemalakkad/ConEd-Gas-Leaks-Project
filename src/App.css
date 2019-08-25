@@ -63,7 +63,7 @@ top: 6px;
   width: 100%;
 }
 
-.ui.borderless.menu {
+.ui.borderless.menu,tablet computer only {
   box-shadow: none;
   flex-wrap: wrap;
   border: none;
@@ -71,14 +71,6 @@ top: 6px;
   padding-right: 0;
   z-index: -1;
 }
-
-/* .ui.borderless.fluid.inverted.top.fixed.menu{
-  background-color: #FFF;
-} */
-
-
-
-
 
 
 .ui.mobile.only.grid .ui.menu .ui.vertical.menu {

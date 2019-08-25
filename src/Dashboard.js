@@ -16,12 +16,6 @@ class Dashboard extends Component {
       display: "none"
     }
   }
-    state= {
-    temps:{},
-    zipCodes: {},
-    year: {},
-    month: {}
-  };
 
 
   handleToggleDropdownMenu = () => {
@@ -50,7 +44,7 @@ class Dashboard extends Component {
           </Menu>
         </Grid>
         <Grid padded className="mobile only">
-          <Menu borderless fluid fixed="top">
+          <Menu borderless fixed fluid="top">
             <Menu.Item header as="a" >
               Gas Leak Finder
             </Menu.Item>
@@ -63,7 +57,7 @@ class Dashboard extends Component {
                   toggle
                   onClick={this.handleToggleDropdownMenu}
                 >
-                  <Icon name="content" />
+                  <Icon name="content" color="black"/>
                 </Button>
               </Menu.Item>
             </Menu.Menu>
@@ -128,12 +122,8 @@ class Dashboard extends Component {
               <Grid.Column mobile={5} tablet={10} computer={8}>
                 <Image src='https://source.unsplash.com/random' />
               </Grid.Column>
-              <Grid.Column mobile={5} tablet={6} computer={6}>
+              <Grid.Column mobile={5} tablet={10} computer={8}>
               <Grid.Row>
-                <Image src='https://source.unsplash.com/random' />
-              </Grid.Row>
-              <Divider/>
-              <Grid.Row mobile={5} tablet={6} computer={6}>
                 <Image src='https://source.unsplash.com/random' />
               </Grid.Row>
               </Grid.Column>
