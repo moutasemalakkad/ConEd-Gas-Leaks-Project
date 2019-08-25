@@ -10,8 +10,6 @@ import {
   Menu
 } from "semantic-ui-react";
 
-import * as d3 from 'd3';
-
 class Dashboard extends Component {
   state = {
     dropdownMenuStyle: {
@@ -42,7 +40,6 @@ class Dashboard extends Component {
       <div className="Dashboard">
         <Grid padded className="tablet computer only">
           <Menu borderless fluid fixed="top">
-          <Menu.Header as="a" className="headerTitle">Gas Leak Finder</Menu.Header>
             <Menu.Menu position="right">
               <Menu.Item as="a">
               <Header as='h4'>
@@ -54,7 +51,7 @@ class Dashboard extends Component {
         </Grid>
         <Grid padded className="mobile only">
           <Menu borderless fluid fixed="top">
-            <Menu.Item header as="a">
+            <Menu.Item header as="a" >
               Gas Leak Finder
             </Menu.Item>
             <Menu.Menu position="right">
@@ -94,21 +91,23 @@ class Dashboard extends Component {
             computer={3}
             only="tablet computer"
             id="sidebar"
+            textAlign="center"
           >
             <Menu vertical borderless fluid text>
+            <Menu.Item as="a" className="headerTitle">Gas Leak Finder</Menu.Item>
             <Divider />
               <Menu.Item as="a" className="menuTitle">
                 View By Year
               </Menu.Item>
               <Divider />
-              <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2013</Menu.Item>
-              <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2014</Menu.Item>
-              <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2015</Menu.Item>
-              <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2016</Menu.Item>
-              <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2017</Menu.Item>
-              <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2018</Menu.Item>
-              <Menu.Item as="a"><Icon link name= 'calendar alternate outline' />2019</Menu.Item>
-              <Menu.Item as="a" className="log-out" textAlign="center" ><Icon link name= "log out red"/>Log Out</Menu.Item>
+              <Menu.Item as="a">2013</Menu.Item>
+              <Menu.Item as="a">2014</Menu.Item>
+              <Menu.Item as="a">2015</Menu.Item>
+              <Menu.Item as="a">2016</Menu.Item>
+              <Menu.Item as="a">2017</Menu.Item>
+              <Menu.Item as="a">2018</Menu.Item>
+              <Menu.Item as="a">2019</Menu.Item>
+              <Menu.Item as="a" className="log-out"><Icon link name= "log out red"/>Log Out</Menu.Item>
             </Menu>
           </Grid.Column>
           <Grid.Column

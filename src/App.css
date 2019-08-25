@@ -9,7 +9,7 @@ body {
   position: fixed;
   height: 100vh;
   background-color: #43425D;
-  padding-top: 48px;
+  padding-top: 0px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -20,25 +20,29 @@ body {
 
 #sidebar .ui.menu > a.item {
   padding: 10px 20px;
-  line-height: 30px;
+  line-height: 28px;
   color: #FFF;
   border-radius: 0 !important;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 15px;
+  font-size: 14px;
 } 
+
+#sidebar .ui.menu > a.item.headerTitle {
+font-size:18px;
+top: 6px;
+}
 #sidebar .ui.menu > a.item.log-out{
   color: red;
   font-weight: bold;
-  font-size: 22;
+  font-size: 20px;
 
 }
-/* #sidebar > div > a.header.headerTitle{
+#sidebar > div > a.header.headerTitle{
   color: #FFF;
   text-align: center;
   bottom: 15;
-
-} */
+}
 
 #sidebar .ui.menu > a.item:hover {
   background-color: #eee;
@@ -66,7 +70,6 @@ body {
   padding-left: 0;
   padding-right: 0;
   z-index: -1;
-  color: #43425D;
 }
 
 /* .ui.borderless.fluid.inverted.top.fixed.menu{

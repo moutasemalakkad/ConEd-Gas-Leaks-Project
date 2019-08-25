@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url()',
+    backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -53,7 +53,7 @@ export default function SignInPage() {
             Gas Leak Portal
           </Typography>
           <Typography>
-          Welcome back! Please login to your account.
+          Welcome back! Please sign into your account.
           </Typography>
           <form className={classes.form} noValidate>
             <TextField

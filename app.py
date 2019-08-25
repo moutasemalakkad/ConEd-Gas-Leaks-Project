@@ -27,7 +27,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 app = Flask(__name__, template_folder="build", static_url_path='/build')
 
 # Database Setup
-app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
+app.config['SECRET_KEY'] = 'secret!'
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/coned.sqlite"
 
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
