@@ -63,8 +63,11 @@ def index():
 
 @app.route("/api/zip-leaks")
 def zipLeaks():
+
+    stmt = db.session.query(coned_data).statement
     ## Use pandas to read csv
-    df = pd.read_csv("final_leaks.csv")
+    df = pd.read_sql(stmt, db.session.bind)
+    # df = pd.read_csv("final_leaks.csv")
 
     ## Convert the Date column to correct datetime format
     df['Date'] = pd.to_datetime(df['Date'], format = '%Y-%m-%d')
