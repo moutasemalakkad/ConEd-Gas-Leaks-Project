@@ -6,13 +6,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, inspect
 from sqlalchemy.orm import Session, Mapper
 from sqlalchemy import create_engine
 import numpy as np
-<<<<<<< HEAD
-=======
 import calendar
-
-
-# <<<<<<< HEA
->>>>>>> 1ef6fa7d... modified app.py to have both endpoints working
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, Flask,url_for, send_from_directory, send_file, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -150,78 +144,6 @@ def monthLeaks():
     # monthly_leaks.index = np.arange(1,len(monthly_leaks)+1)
     # monthly_leaks_dict = monthly_leaks.to_dict()
     # final_monthly_leaks_dict = monthly_leaks_dict['Number_of_Leaks']
-
-
-<<<<<<< HEAD
-    # # Place the dictionaries from above into final dictionary to respond to API request
-    # final_dict = {
-    #     "ZipData:" : year_data_dict,
-    #     "TempData" : final_month_dict,
-    #     "MonthlyLeaks" : final_monthly_leaks_dict
-    # }
-
-    leaks_dict = {}
-    for i in range(6):
-        wh_year = 2013+i
-        year_data = df[df['Date'].dt.year == wh_year]
-        
-        ## get data for leaks per zipcode for that given year
-        year_zip_data = pd.DataFrame(year_data.groupby('ZIP_CODE').sum()['TMAX'])
-        year_zip_data.rename(columns = {'TMAX': 'Total_Leaks'}, inplace=True)
-    #     print(i)
-    #     print(year_zip_data.head())
-        year_zip_data.reset_index(inplace=True)
-        json = year_zip_data.to_json(orient='records')
-        leaks_dict[wh_year] = json
-
-    return jsonify(leaks_dict)
-=======
-
-
-#login
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-# login_manager.login_view = 'login'
-
-# class User(UserMixin, db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(15), unique=True)
-#     email = db.Column(db.String(50), unique=True)
-#     password = db.Column(db.String(80))
-
-# class LoginForm(FlaskForm):
-#     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-#     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-#     remember = BooleanField('remember me')
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user:
-            if check_password_hash(user.password, form.password.data):
-                login_user(user, remember=form.remember.data)
-                return redirect(url_for('dashboard'))
-
-        return '<h1>Invalid username or password</h1>'
-        #return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
-
-    return render_template('login.html', form=form)
-
-
-
-@app.route('/logged-out')
-# @login_required
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
-
-
-
-
->>>>>>> 1ef6fa7d... modified app.py to have both endpoints working
 
 
 @app.route('/static/<path:path>')
