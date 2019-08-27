@@ -10,9 +10,11 @@ import {
   Menu,
   Container
 } from "semantic-ui-react";
-import BarLine from './BarLine';
+// import BarLine from './BarLine';
+
 
 class Dashboard extends Component {
+
   state = {
     dropdownMenuStyle: {
       display: "none"
@@ -125,17 +127,38 @@ class Dashboard extends Component {
                 <Container id="layout">
                   <Grid.Row id="container">
                     <svg/>
-                    <BarLine />
                   </Grid.Row>
                 </Container>
               </Grid.Column>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-              <Container id="layout">
+              {/* <Container id="layout">
                   <Grid.Row id="container">
-                    <svg/>
+                    <BarLine />
                    
                   </Grid.Row>
-                </Container>
+                </Container> */}
+
+                <div class="container">
+    <div class="row">
+        <div class="col-xs-12" >
+            <div class="top" id="top-line-chart">
+ 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-7">
+            <div class="bottom-left" id="browser">
+ 
+            </div>
+        </div>
+        <div class="col-xs-5">
+            <div class="bottom-right" id="ret_visitors">
+ 
+            </div>
+        </div>
+    </div>
+</div>
               </Grid.Column>
             </Grid>
             </Grid.Row>
