@@ -6,6 +6,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, inspect
 from sqlalchemy.orm import Session, Mapper
 from sqlalchemy import create_engine
 import numpy as np
+import calendar
 
 
 # <<<<<<< HEA
@@ -60,13 +61,77 @@ def index():
     return render_template('index.html')
     # return 'Hi'
 
-@app.route("/api/gas-leaks")
-def gasLeaks():
+@app.route("/api/zip-leaks")
+def zipLeaks():
     ## Use pandas to read csv
     df = pd.read_csv("final_leaks.csv")
 
     ## Convert the Date column to correct datetime format
     df['Date'] = pd.to_datetime(df['Date'], format = '%Y-%m-%d')
+
+    leaks_dict = {}
+    for i in range(6):
+        wh_year = 2013+i
+        year_data = df[df['Date'].dt.year == wh_year]
+        
+        ## get data for leaks per zipcode for that given year
+        year_zip_data = pd.DataFrame(year_data.groupby('ZIP_CODE').sum()['TMAX'])
+        year_zip_data.rename(columns = {'TMAX': 'Total_Leaks'}, inplace=True)
+    #     print(i)
+    #     print(year_zip_data.head())
+        year_zip_data.reset_index(inplace=True)
+        json = year_zip_data.to_json(orient='records')
+        leaks_dict[wh_year] = json
+
+    return jsonify(leaks_dict)
+
+##### Route for the monthly leaks
+
+@app.route("/api/monthly-leaks")
+def monthLeaks():
+
+        ## Use pandas to read csv
+    df = pd.read_csv("final_leaks.csv")
+
+    ## Convert the Date column to correct datetime format
+    df['Date'] = pd.to_datetime(df['Date'], format = '%Y-%m-%d')
+
+    months = pd.DataFrame(df['Date'].dt.month)
+    months.rename(columns = {"Date": 'Month'}, inplace=True)
+
+    df['Month'] = df['Date'].dt.month
+    df['Year'] = df['Date'].dt.year
+
+    df['Month'] = df['Month'].apply(lambda x: calendar.month_abbr[x])
+    grouped_month_day_df  = df.groupby(['Year','Month', 'Date'], sort=False).count()['TMAX']
+
+    grouped_month_day_df = pd.DataFrame(grouped_month_day_df)
+    grouped_month_day_df.rename(columns = {'TMAX': 'Leak_Count'}, inplace =  True)
+
+    grouped_month_day_indexed_df = grouped_month_day_df.reset_index()
+    grouped_month_day_indexed_df['Date'] = grouped_month_day_indexed_df['Date'].astype(str)
+
+    response = {}
+    for row in grouped_month_day_indexed_df.values:
+    
+        year = row[0]
+        month = row[1]
+        date = row[2]
+        leak_c = row[3]
+        
+        
+        if year not in response:
+            response[year] = {}
+        else:
+            if month not in response[year]:
+                response[year][month] = {}
+            else:
+                if date not in response[year][month]:
+                    response[year][month][date] = leak_c
+                else:
+                    pass
+
+    return jsonify(response)
 
     # ## get the data for the full year where date = 2013
     # year_data = df[df['Date'].dt.year == 2013]
@@ -105,30 +170,6 @@ def gasLeaks():
     # monthly_leaks.index = np.arange(1,len(monthly_leaks)+1)
     # monthly_leaks_dict = monthly_leaks.to_dict()
     # final_monthly_leaks_dict = monthly_leaks_dict['Number_of_Leaks']
-
-
-    # # Place the dictionaries from above into final dictionary to respond to API request
-    # final_dict = {
-    #     "ZipData:" : year_data_dict,
-    #     "TempData" : final_month_dict,
-    #     "MonthlyLeaks" : final_monthly_leaks_dict
-    # }
-
-    leaks_dict = {}
-    for i in range(6):
-        wh_year = 2013+i
-        year_data = df[df['Date'].dt.year == wh_year]
-        
-        ## get data for leaks per zipcode for that given year
-        year_zip_data = pd.DataFrame(year_data.groupby('ZIP_CODE').sum()['TMAX'])
-        year_zip_data.rename(columns = {'TMAX': 'Total_Leaks'}, inplace=True)
-    #     print(i)
-    #     print(year_zip_data.head())
-        year_zip_data.reset_index(inplace=True)
-        json = year_zip_data.to_json(orient='records')
-        leaks_dict[wh_year] = json
-
-    return jsonify(leaks_dict)
 
 
 
