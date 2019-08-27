@@ -54,7 +54,7 @@ export default function SignInPage() {
           <Typography>
           Welcome back! Please sign into your account.
           </Typography>
-          <form className={classes.form} noValidate>
+          <form action ='/dashboard' className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"

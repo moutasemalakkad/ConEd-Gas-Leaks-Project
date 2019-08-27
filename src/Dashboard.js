@@ -79,7 +79,7 @@ class Dashboard extends Component {
               <Menu.Item as="a" className="data5">2017</Menu.Item>
               <Menu.Item as="a" className="data6">2018</Menu.Item>
               <Menu.Item as="a" className="data7">2019</Menu.Item>
-              <Menu.Item as="a" className="log-out red">Log Out</Menu.Item>
+              <Menu.Item as="a" action ='/logged-out' type = 'submit' method= "GET" className="log-out red">Log Out</Menu.Item>
             </Menu>
           </Menu>
         </Grid>
@@ -105,7 +105,7 @@ class Dashboard extends Component {
               <Menu.Item as="a" className="data5">2017</Menu.Item>
               <Menu.Item as="a" className="data6">2018</Menu.Item>
               <Menu.Item as="a" className="data7">2019</Menu.Item>
-              <Menu.Item as="a" className="log-out"><Icon link name= "log out" color="red"/>Log Out</Menu.Item>
+              <Menu.Item as="a" href='/logged-out' className="log-out"><Icon link name= "log out" color="red"/>Log Out</Menu.Item>
             </Menu>
           </Grid.Column>
           <Grid.Column
@@ -124,11 +124,12 @@ class Dashboard extends Component {
               <Grid.Row textAlign="center">
             <Grid container stackable columns={2}>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-                <Container id="layout">
-                  <Grid.Row id="container">
-                    <svg/>
-                  </Grid.Row>
-                </Container>
+                
+                
+                <div>place svg here </div>
+
+
+
               </Grid.Column>
               <Grid.Column mobile={5} tablet={10} computer={8}>
               {/* <Container id="layout">
