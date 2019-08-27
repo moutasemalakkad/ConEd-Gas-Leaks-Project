@@ -7,6 +7,13 @@ from sqlalchemy.orm import Session, Mapper
 from sqlalchemy import create_engine
 import numpy as np
 import calendar
+<<<<<<< HEAD
+=======
+import sqlite3
+
+
+# <<<<<<< HEA
+>>>>>>> 7507ca2a... set connection to DB instead of csv file
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, Flask,url_for, send_from_directory, send_file, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -37,8 +44,11 @@ def index():
 
 @app.route("/api/zip-leaks")
 def zipLeaks():
+
+    conn = sqlite3.connect("coned.db")
+    df = pd.read_sql_query("select * from ConEdDB", conn)
     ## Use pandas to read csv
-    df = pd.read_csv("final_leaks.csv")
+    # df = pd.read_csv("final_leaks.csv")
 
     ## Convert the Date column to correct datetime format
     df['Date'] = pd.to_datetime(df['Date'], format = '%Y-%m-%d')
@@ -64,8 +74,10 @@ def zipLeaks():
 @app.route("/api/monthly-leaks")
 def monthLeaks():
 
+    conn = sqlite3.connect("coned.db")
+    df = pd.read_sql_query("select * from ConEdDB", conn)
         ## Use pandas to read csv
-    df = pd.read_csv("final_leaks.csv")
+    # df = pd.read_csv("final_leaks.csv")
 
     ## Convert the Date column to correct datetime format
     df['Date'] = pd.to_datetime(df['Date'], format = '%Y-%m-%d')
@@ -110,8 +122,10 @@ def monthLeaks():
 @app.route("/api/monthly-temps")
 def monthTemps():
 
+    conn = sqlite3.connect("coned.db")
+    df = pd.read_sql_query("select * from ConEdDB", conn)
         ## Use pandas to read csv
-    df = pd.read_csv("final_leaks.csv")
+    # df = pd.read_csv("final_leaks.csv")
 
     ## Convert the Date column to correct datetime format
     df['Date'] = pd.to_datetime(df['Date'], format = '%Y-%m-%d')

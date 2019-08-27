@@ -124,42 +124,22 @@ class Dashboard extends Component {
               <Grid.Row textAlign="center">
             <Grid container stackable columns={2}>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-                
-                
-                <div>place svg here </div>
+                <Container id= 'layout'>
+                  <Grid.Row id="container">
+                      place svg here
+                  </Grid.Row>
+                </Container>
 
 
 
               </Grid.Column>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-              {/* <Container id="layout">
+              <Container id="layout">
                   <Grid.Row id="container">
-                    <BarLine />
+                    place svg here
                    
                   </Grid.Row>
-                </Container> */}
-
-                <div class="container">
-    <div class="row">
-        <div class="col-xs-12" >
-            <div class="top" id="top-line-chart">
- 
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-7">
-            <div class="bottom-left" id="browser">
- 
-            </div>
-        </div>
-        <div class="col-xs-5">
-            <div class="bottom-right" id="ret_visitors">
- 
-            </div>
-        </div>
-    </div>
-</div>
+                </Container>
               </Grid.Column>
             </Grid>
             </Grid.Row>
