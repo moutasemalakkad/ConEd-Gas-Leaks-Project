@@ -7,13 +7,10 @@ from sqlalchemy.orm import Session, Mapper
 from sqlalchemy import create_engine
 import numpy as np
 import calendar
-<<<<<<< HEAD
-=======
 import sqlite3
 
 
 # <<<<<<< HEA
->>>>>>> 7507ca2a... set connection to DB instead of csv file
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, Flask,url_for, send_from_directory, send_file, jsonify
 from flask_sqlalchemy import SQLAlchemy
