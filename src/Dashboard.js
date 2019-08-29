@@ -1,4 +1,4 @@
-import React, { Component, useMemo } from "react";
+import React, { Component } from "react";
 import "semantic-ui-css/semantic.min.css";
 import {
   Button,
@@ -10,13 +10,6 @@ import {
   Menu,
   Container
 } from "semantic-ui-react";
-import Hybrid from "./Hybrid";
-import PieChart from "./PieChart";
-import * as d3 from "d3";
-import Faker from "faker";
-import chroma from "chroma-js";
-import { range } from "d3-array";
-import { useTooltip, tooltipContext } from "./useToolTip";
 import BarLine from "./BarLine";
 
 
@@ -108,13 +101,13 @@ class Dashboard extends Component {
                 View By Year
               </Menu.Item>
               <Divider />
-              <Menu.Item as="a" className="data1">Coming Soon>2013</Menu.Item>
+              <Menu.Item as="a" className="data7">Coming Soon</Menu.Item>
+              <Menu.Item as="a" className="data1">Coming Soon</Menu.Item>
               <Menu.Item as="a" className="data2">Coming Soon</Menu.Item>
               <Menu.Item as="a" className="data3">Coming Soon</Menu.Item>
               <Menu.Item as="a" className="data4">Coming Soon</Menu.Item>
               <Menu.Item as="a" className="data5">Coming Soon</Menu.Item>
-              <Menu.Item as="a" className="data6">Coming Soon</Menu.Item>
-              <Menu.Item as="a" className="data7">2019</Menu.Item>
+              <Menu.Item as="a" className="data6">2019</Menu.Item>
               <Menu.Item as="a" href='/logged-out' className="log-out"><Icon link name= "log out" color="red"/>Log Out</Menu.Item>
             </Menu>
           </Grid.Column>

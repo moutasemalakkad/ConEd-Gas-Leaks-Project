@@ -182,14 +182,14 @@ const barchart = function(anchor, props) {
       .attr('x', width / 2 + margin)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
-      .text('2019 Gas Leaks Vs Temeparture')
+      .text('2019 Gas Leaks Vs Temparture')
   
     svg.append('text')
       .attr('class', 'source')
       .attr('x', width - margin / 2)
       .attr('y', height + margin * 2.7)
       .attr('text-anchor', 'start')
-      .text('Con Edison Data, 2018')
+      .text('Con Edison Data, 2019')
   
 };
 
