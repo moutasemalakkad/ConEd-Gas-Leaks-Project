@@ -7,21 +7,16 @@ from sqlalchemy.orm import Session, Mapper
 from sqlalchemy import create_engine
 import numpy as np
 import calendar
-<<<<<<< HEAD
-=======
 import sqlite3
-
-
-# <<<<<<< HEA
->>>>>>> 7507ca2a... set connection to DB instead of csv file
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, Flask,url_for, send_from_directory, send_file, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
+from flask_cors import CORS
 
 # Initilaize an instance
 app = Flask(__name__, template_folder="build", static_url_path='/build')
-
+CORS(app)
 # Database Setup
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/coned.sqlite"
 

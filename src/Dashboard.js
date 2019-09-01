@@ -10,17 +10,15 @@ import {
   Menu,
   Container
 } from "semantic-ui-react";
-// import BarLine from './BarLine';
-
+import * as d3 from 'd3v4';
+import ThirteenViz from './ThirteenViz'
 
 class Dashboard extends Component {
-
   state = {
     dropdownMenuStyle: {
       display: "none"
     }
   }
-
 
   handleToggleDropdownMenu = () => {
     let newState = Object.assign({}, this.state);
@@ -33,7 +31,32 @@ class Dashboard extends Component {
     this.setState(newState);
   };
 
+  // const monthlyLeaksTemps = () => {
+  //   const [hasError, setErrors] = useState(false);
+  //   const [monthlyLeaks, setMonthlyLeaks] = useState({});
+  //   const [monthlyTemps, setMonthlyTemps] = useState({});
+  
+  //   async function fetchData() {
+  //     const resLeaks = await fetch("http://127.0.0.1:5000/api/monthly-leaks");
+  //     const resTemps = await fetch("http://127.0.0.1:5000/api/monthly-temps");
+  
+  //     resLeaks
+  //       .json()
+  //       .then(resLeaks => setMonthlyLeaks(resLeaks))
+  //       .catch(err => setErrors(err));
+        
+  //     resTemps
+  //     .json()
+  //     .then(resTemps => setMonthlyTemps(resTemps))
+  //     .catch(err => setErrors(err));
+  //   }
+  
+  //   useEffect(() => {
+  //     fetchData();
+  //   })
+
   render() {
+    
     return (
       <div className="Dashboard">
         <Grid padded className="tablet computer only">
@@ -41,7 +64,7 @@ class Dashboard extends Component {
             <Menu.Menu position="right">
               <Menu.Item as="a">
               <Header as='h4'>
-                <Image circular src='https://react.semantic-ui.com/images/avatar/large/patrick.png' /> Patrick
+                <Image circular src='https://react.semantic-ui.com/images/avatar/large/patrick.png' /> Data Bootcamp
               </Header>
               </Menu.Item>
             </Menu.Menu>
@@ -124,18 +147,17 @@ class Dashboard extends Component {
               <Grid.Row textAlign="center">
             <Grid container stackable columns={2}>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-                <Container id= 'layout'>
-                  <Grid.Row id="container">
-                      place svg here
+                <Container id="container">
+                  <Grid.Row id="layout">
+                  <svg width="960" height="600">
+                  <ThirteenViz  width={960} height={600}/>
+                  </svg>
                   </Grid.Row>
                 </Container>
-
-
-
               </Grid.Column>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-              <Container id="layout">
-                  <Grid.Row id="container">
+              <Container>
+                  <Grid.Row>
                     place svg here
                    
                   </Grid.Row>

@@ -77,18 +77,18 @@ top: 6px;
   display: none;
 }
 
-
-/* SVG */
-
+/* SVG 
 div#layout {
   text-align: center;
 }
 
 div#container {
-  width: 500px;
+  width: 1000px;
   height: 600px;
   margin: auto;
   background-color: #43425D;
+  position: absolute;
+  top: 60 
 }
 
 svg {
@@ -149,4 +149,39 @@ text.label {
 
 text.source {
   font-size: 10px;
+}
+
+#inds{
+  position:absolute;
+  top:10px;
+  right:10px;
+}
+*/
+
+
+path {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.districts {
+  fill: #bbb;
+}
+
+.districts :hover {
+  fill: orange;
+}
+
+.district-boundaries {
+  pointer-events: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+
+.state-boundaries {
+  pointer-events: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
 }
