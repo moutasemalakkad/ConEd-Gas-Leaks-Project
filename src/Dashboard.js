@@ -10,8 +10,8 @@ import {
   Menu,
   Container
 } from "semantic-ui-react";
-import * as d3 from 'd3v4';
-import ThirteenViz from './ThirteenViz'
+import BarLine from "./BarLine";
+
 
 class Dashboard extends Component {
   state = {
@@ -30,30 +30,6 @@ class Dashboard extends Component {
 
     this.setState(newState);
   };
-
-  // const monthlyLeaksTemps = () => {
-  //   const [hasError, setErrors] = useState(false);
-  //   const [monthlyLeaks, setMonthlyLeaks] = useState({});
-  //   const [monthlyTemps, setMonthlyTemps] = useState({});
-  
-  //   async function fetchData() {
-  //     const resLeaks = await fetch("http://127.0.0.1:5000/api/monthly-leaks");
-  //     const resTemps = await fetch("http://127.0.0.1:5000/api/monthly-temps");
-  
-  //     resLeaks
-  //       .json()
-  //       .then(resLeaks => setMonthlyLeaks(resLeaks))
-  //       .catch(err => setErrors(err));
-        
-  //     resTemps
-  //     .json()
-  //     .then(resTemps => setMonthlyTemps(resTemps))
-  //     .catch(err => setErrors(err));
-  //   }
-  
-  //   useEffect(() => {
-  //     fetchData();
-  //   })
 
   render() {
     
@@ -95,14 +71,15 @@ class Dashboard extends Component {
               vertical
               style={this.state.dropdownMenuStyle}
             >
-              <Menu.Item as="a" className="data1">2013</Menu.Item>
-              <Menu.Item as="a" className="data2">2014</Menu.Item>
-              <Menu.Item as="a" className="data3">2015</Menu.Item>
-              <Menu.Item as="a" className="data4">2016</Menu.Item>
-              <Menu.Item as="a" className="data5">2017</Menu.Item>
-              <Menu.Item as="a" className="data6">2018</Menu.Item>
+              <Menu.Item as="a" className="data1">Coming Soon 2013</Menu.Item>
+              <Menu.Item as="a" className="data2">Coming Soon 2014</Menu.Item>
+              <Menu.Item as="a" className="data3">Coming Soon 2015</Menu.Item>
+              <Menu.Item as="a" className="data4">Coming Soon 2016</Menu.Item>
+              <Menu.Item as="a" className="data5">Coming Soon 2017</Menu.Item>
+              <Menu.Item as="a" className="data6">Coming Soon 2018</Menu.Item>
               <Menu.Item as="a" className="data7">2019</Menu.Item>
               <Menu.Item as="a" action ='/logged-out' type = 'submit' method= "GET" className="log-out red">Log Out</Menu.Item>
+
             </Menu>
           </Menu>
         </Grid>
@@ -121,13 +98,13 @@ class Dashboard extends Component {
                 View By Year
               </Menu.Item>
               <Divider />
-              <Menu.Item as="a" className="data1">2013</Menu.Item>
-              <Menu.Item as="a" className="data2">2014</Menu.Item>
-              <Menu.Item as="a" className="data3">2015</Menu.Item>
-              <Menu.Item as="a" className="data4">2016</Menu.Item>
-              <Menu.Item as="a" className="data5">2017</Menu.Item>
-              <Menu.Item as="a" className="data6">2018</Menu.Item>
-              <Menu.Item as="a" className="data7">2019</Menu.Item>
+              <Menu.Item as="a" className="data7">Coming Soon</Menu.Item>
+              <Menu.Item as="a" className="data1">Coming Soon</Menu.Item>
+              <Menu.Item as="a" className="data2">Coming Soon</Menu.Item>
+              <Menu.Item as="a" className="data3">Coming Soon</Menu.Item>
+              <Menu.Item as="a" className="data4">Coming Soon</Menu.Item>
+              <Menu.Item as="a" className="data5">Coming Soon</Menu.Item>
+              <Menu.Item as="a" className="data6">2019</Menu.Item>
               <Menu.Item as="a" href='/logged-out' className="log-out"><Icon link name= "log out" color="red"/>Log Out</Menu.Item>
             </Menu>
           </Grid.Column>
@@ -145,24 +122,19 @@ class Dashboard extends Component {
                 </Header>
               </Grid.Row>
               <Grid.Row textAlign="center">
-            <Grid container stackable columns={2}>
+            <Grid container stackable>
               <Grid.Column mobile={5} tablet={10} computer={8}>
-                <Container id="container">
-                  <Grid.Row id="layout">
-                  <svg width="960" height="600">
-                  <ThirteenViz  width={960} height={600}/>
-                  </svg>
-                  </Grid.Row>
-                </Container>
-              </Grid.Column>
-              <Grid.Column mobile={5} tablet={10} computer={8}>
-              <Container>
-                  <Grid.Row>
-                    place svg here
-                   
-                  </Grid.Row>
-                </Container>
-              </Grid.Column>
+                <Container id= 'layout'>
+                  <Grid id="container">
+                  <div>
+              <svg width="1000" height="600">
+                <BarLine x={10} y={10} width={1000} height={600} />
+              </svg>
+           </div>
+
+    </Grid>
+  </Container>
+    </Grid.Column>
             </Grid>
             </Grid.Row>
             <Grid.Row>
@@ -175,6 +147,7 @@ class Dashboard extends Component {
       </div>
     );
   }
+  
 }
 
 export default Dashboard;

@@ -5,15 +5,19 @@
   "dependencies": {
     "@material-ui/core": "^4.3.3",
     "chart.js": "^2.8.0",
-    "d3v4": "^4.2.2",
+    "chroma-js": "^2.0.6",
+    "d3": "^5.11.0",
+    "d3-queue": "^3.0.7",
+    "d3blackbox": "^1.2.0",
+    "faker": "^4.1.0",
     "react": "^16.9.0",
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.0",
-    "topojson": "^3.0.2"
+    "semantic-ui-react": "^0.87.3",
+    "styled-components": "^4.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
