@@ -1,23 +1,25 @@
 {
   "name": "con-ed-react-app",
   "version": "0.1.0",
+  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.3.3",
     "chart.js": "^2.8.0",
     "chroma-js": "^2.0.6",
     "d3": "^5.11.0",
+    "d3-fetch": "^1.1.2",
     "d3-queue": "^3.0.7",
     "d3blackbox": "^1.2.0",
-    "faker": "^4.1.0",
     "react": "^16.9.0",
-    "react-d3-components": "^0.9.1",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.3",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "whatwg": "^2.0.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

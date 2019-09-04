@@ -2,6 +2,46 @@ import React from "react";
 import * as d3 from "d3";
 import { useD3 } from "d3blackbox";
 
+
+d3.json(`/api/monthly-leaks`).then(function(leaksCount, error){
+  if(error) {
+    console.log(error);
+
+    throw error;
+  }
+  //console.log("leaksCount", leaksCount);
+
+ const leakVals = (obj) => {
+  var total = 0;
+      Object.keys(obj).forEach(key => {
+        total += obj[key]
+        console.log(key, obj[key])
+
+      if (typeof obj[key] === 'object') {
+              leakVals(obj[key])
+          }
+      })
+      console.log(total);
+    }
+
+    leakVals(leaksCount[2013])
+    // leakVals(leaksCount[2014])
+    // leakVals(leaksCount[2015])
+    // leakVals(leaksCount[2016])
+    // leakVals(leaksCount[2017])
+    // leakVals(leaksCount[2018])    
+});
+  
+
+// var data = [{ a: 1, b: 2, c: 3, d: 4 }, { a: 2, b: 3, c: 4, d: 5 }],
+//     sum = data.map(function (object) {
+//         return Object.keys(object).reduce(function (sum, key) {
+//             return sum + object[key];
+//         }, 0);
+//     });
+
+// console.log(sum);
+ 
 const barchart = function(anchor, props) {
     const monthTemps = [
         {
@@ -54,11 +94,12 @@ const barchart = function(anchor, props) {
             temp: 19.6
           }
       ];
+    
+
     const svg = d3.select('svg');
-    const svgContainer = d3.select('#container');
     const margin = 80;
-    const width = 1000 - 2 * margin;
-    const height = 600 - 2 * margin;
+    const width = 800 - 2 * margin;
+    const height = 620 - 2 * margin;
   
     const chart = svg.append('g')
       .attr('transform', `translate(${margin}, ${margin})`);
@@ -70,7 +111,7 @@ const barchart = function(anchor, props) {
     
     const yScale = d3.scaleLinear()
       .range([height, 0])
-      .domain([0, 100]);
+      .domain([0, 110]);
   
     const makeYLines = () => d3.axisLeft()
       .scale(yScale)
@@ -165,7 +206,7 @@ const barchart = function(anchor, props) {
       .append('text')
       .attr('class', 'label')
       .attr('x', -(height / 2) - margin)
-      .attr('y', margin / 2.4)
+      .attr('y', margin / 2.1)
       .attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle')
       .text('Temperature')
@@ -182,15 +223,14 @@ const barchart = function(anchor, props) {
       .attr('x', width / 2 + margin)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
-      .text('2019 Gas Leaks Vs Temparture')
+      .text('2018 Gas Leaks Vs Temperature')
   
     svg.append('text')
       .attr('class', 'source')
       .attr('x', width - margin / 2)
-      .attr('y', height + margin * 2.7)
+      .attr('y', height + margin * 2)
       .attr('text-anchor', 'start')
-      .text('Con Edison Data, 2019')
-  
+      .text('Con Edison Data')
 };
 
 export default ({ x, y, width, height }) => {

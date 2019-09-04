@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router, 
-  Route,
-} from 'react-router-dom'; 
-import SignInPage from './SignInPage'
-import Dashboard from './Dashboard'
-import LoggedOut from './LoggedOut'
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom'; 
+import SignInPage from './Components/SignInPage'
+import Dashboard from './Components/Dashboard'
+import LoggedOut from './Components/LoggedOut'
+
 
 class App extends Component {
   render() {
